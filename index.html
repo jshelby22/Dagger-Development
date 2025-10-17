@@ -1,90 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dagger Development</title>
   <link rel="icon" type="image/png" href="favicon.png">
-
   <style>
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: linear-gradient(to bottom, #ffffff, #ffe5e5);
-      color: #111;
-      text-align: center;
+      height: 100vh;
+      background: linear-gradient(to right, #c9ccd1, #f5f3ee);
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      min-height: 100vh;
-    }
-
-    img.logo {
-      width: 180px;
-      height: auto;
-      margin-bottom: 30px;
-      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));
-    }
-
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      letter-spacing: 1px;
-    }
-
-    p {
-      font-size: 1.1rem;
-      margin: 5px 0 25px 0;
+      align-items: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: #333;
     }
 
-    .contact {
-      font-size: 1rem;
-      background-color: #fff;
-      padding: 15px 25px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    header {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
-    a {
-      color: #c0392b;
+    header img {
+      width: 150px;
+      height: auto;
+      margin-bottom: 8px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    main img {
+      width: 150px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      font-size: 1.1rem;
+      font-style: italic;
+      text-align: center;
+      position: absolute;
+      bottom: 40px;
+    }
+
+    footer a {
+      color: #000;
       text-decoration: none;
       font-weight: 600;
     }
 
-    a:hover {
+    footer a:hover {
       text-decoration: underline;
-    }
-
-    footer {
-      position: absolute;
-      bottom: 15px;
-      font-size: 0.9rem;
-      color: #666;
     }
   </style>
 </head>
 <body>
-  <!-- Inline placeholder logo (you can replace with your own file) -->
-  <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 140" fill="none">
-    <line x1="50" y1="10" x2="50" y2="130" stroke="#111" stroke-width="6" stroke-linecap="round"/>
-    <line x1="30" y1="40" x2="70" y2="40" stroke="#111" stroke-width="6" stroke-linecap="round"/>
-    <text x="25" y="85" font-size="18" font-family="monospace" fill="#111">&lt;/&gt;</text>
-  </svg>
 
-  <!-- Company Name -->
-  <h1>Dagger Development</h1>
-  <p><i>&lt;forged in code&gt;</i></p>
+  <header>
+    <img src="dagger_logo.png" alt="Dagger Development Logo">
+    <h1>DAGGER DEVELOPMENT</h1>
+    <p>FORGED IN CODE</p>
+  </header>
 
-  <!-- About -->
-  <p>Independent app developer focused on simplicity and clean design.</p>
+  <main>
+    <img src="dagger_icon.png" alt="Dagger Icon">
+  </main>
 
-  <!-- Contact -->
-  <div class="contact">
-    <p>Customer Support: <a href="mailto:daggerdevelop@gmail.com">daggerdevelop@gmail.com</a></p>
-  </div>
+  <footer>
+    for customer service reach out to<br>
+    <a href="mailto:daggerdevelop@gmail.com">daggerdevelop@gmail.com</a>
+  </footer>
 
-  <footer>© 2025 Dagger Development</footer>
 </body>
 </html>
