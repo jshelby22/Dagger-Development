@@ -1,186 +1,230 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dagger Development</title>
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <style>
-    /* GLOBAL RESET */
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: linear-gradient(to right, #c9ccd1, #f5f3ee);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: #333;
-      overflow-x: hidden;
-      padding: 1rem;
-    }
-
-    header {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin-top: 1rem;
-      margin-bottom: 1.5rem;
-      text-align: left;
-      width: 100%;
-      max-width: 900px;
-    }
-
-    header img {
-      width: 140px;
-      height: auto;
-      margin-bottom: 8px;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 1.4rem;
-      letter-spacing: 1px;
-    }
-
-    header p {
-      margin: 0;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-    }
-
-    main {
-      width: 100%;
-      max-width: 700px;
-      padding: 2rem;
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      margin-bottom: 4rem;
-    }
-
-    main h2 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      letter-spacing: 1px;
-    }
-
-    main p {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-
-    main img {
-      width: 150px;
-      height: auto;
-      margin-bottom: 10px;
-      opacity: 0.5;
-    }
-
-    footer {
-      font-size: 1rem;
-      font-style: italic;
-      text-align: center;
-      margin-top: auto;
-      padding-bottom: 1.5rem;
-    }
-
-    footer a {
-      color: #000;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* MOBILE OPTIMIZATION */
-    @media (max-width: 768px) {
-      body {
-        padding: 0.5rem;
-        justify-content: flex-start;
-      }
-
-      header {
-        align-items: center;
-        text-align: center;
-      }
-
-      header img {
-        width: 120px;
-      }
-
-      header h1 {
-        font-size: 1.2rem;
-      }
-
-      main {
-        padding: 1.5rem;
-        margin-bottom: 3rem;
-      }
-
-      main h2 {
-        font-size: 1.4rem;
-      }
-
-      main p {
-        font-size: 0.9rem;
-      }
-
-      footer {
-        font-size: 0.9rem;
-      }
-    }
-
-    /* VERY SMALL SCREENS */
-    @media (max-width: 480px) {
-      main {
-        padding: 1rem;
-      }
-
-      main h2 {
-        font-size: 1.2rem;
-      }
-
-      main img {
-        width: 100px;
-      }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090b0d">
+  <meta name="description" content="Dagger Development is an independent iOS studio by James Shelby, creating focused apps for money, goals, family life, communication, and everyday decisions.">
+  <meta property="og:title" content="Dagger Development — Independent iOS Apps">
+  <meta property="og:description" content="Focused iPhone apps, forged with purpose by indie developer James Shelby.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://daggerdev.com/">
+  <meta property="og:image" content="https://daggerdev.com/dagger_logo.png">
+  <link rel="canonical" href="https://daggerdev.com/">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <title>Dagger Development — Independent iOS Apps</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Dagger Development",
+    "url": "https://daggerdev.com/",
+    "founder": {"@type": "Person", "name": "James Shelby"},
+    "email": "mailto:daggerdevelop@gmail.com",
+    "description": "An independent iOS development studio creating focused apps for everyday life."
+  }
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header>
-    <img src="dagger_logo.png" alt="Dagger Development Logo" />
-    <h1>DAGGER DEVELOPMENT</h1>
-    <p>FORGED IN CODE</p>
+  <header class="site-header" data-header>
+    <div class="shell nav-shell">
+      <a class="brand" href="#top" aria-label="Dagger Development home">
+        <svg class="brand-mark" viewBox="0 0 40 52" aria-hidden="true">
+          <path d="M20 2v7M8 13h24M20 17l-3 18M13 22l-7 5 7 5M27 22l7 5-7 5M20 39v11"/>
+        </svg>
+        <span class="brand-copy"><strong>Dagger</strong><small>Development</small></span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+        <span></span><span></span><span></span>
+        <span class="sr-only">Open navigation</span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+        <a href="#apps">Apps</a>
+        <a href="#story">Story</a>
+        <a href="#principles">Principles</a>
+        <a class="nav-cta" href="mailto:daggerdevelop@gmail.com">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <img src="dagger_icon.png" alt="Dagger Icon" />
-    <h2>About Me</h2>
-    <p>Hey there — I’m James, the creator behind <strong>Dagger Development</strong>.</p>
-    <p>Born in Sonoma County, California in the late ‘80s, I grew up during the rise of personal computing. My school donated a <strong>Macintosh</strong> when I was a kid, and that gift changed everything. I spent countless hours exploring, tinkering, and learning what made computers tick. By high school, I’d already built my first PC from scratch and was deep into classic games like <strong>Tibia</strong>, <strong>StarCraft</strong>, and <strong>Command & Conquer</strong> — the early sparks that fueled my lifelong fascination with technology, creativity, and strategy.</p>
-    <p>My professional journey hasn’t been a straight line — and that’s exactly what makes it interesting. I spent five years as an <strong>EMT</strong>, four years in <strong>private security</strong>, and over seven years in <strong>knife manufacturing</strong>, where precision, discipline, and process mattered. Through it all, I stayed close to computers, driven by curiosity and the desire to create.</p>
-    <p>That passion has evolved into a mission: to become a <strong>solo iOS developer</strong> and bring ideas to life through clean, functional, and visually compelling apps. I’m currently focused on mastering <strong>Swift</strong>, <strong>Python</strong>, and <strong>modern web technologies</strong>, blending technical skill with creative problem-solving to craft digital tools that feel personal, purposeful, and built with heart.</p>
-    <p><strong>Dagger Development</strong> isn’t just a name — it’s a symbol of focus, craftsmanship, and cutting-edge creativity.</p>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-grid shell">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> Independent iOS studio</p>
+          <h1>Useful apps.<br><em>Forged with focus.</em></h1>
+          <p class="hero-lede">Dagger Development is the independent studio of James Shelby—building clear, purposeful iPhone apps for the parts of life that should feel simpler.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#apps">Explore the apps <span aria-hidden="true">↓</span></a>
+            <a class="button button-quiet" href="https://apps.apple.com/us/developer/james-shelby/id1848027565">Developer page <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+
+        <a class="featured-app" href="https://apps.apple.com/us/app/glassledger/id6754355803" aria-label="View GlassLedger on the App Store">
+          <div class="featured-topline">
+            <span>Featured release</span>
+            <span>Finance · $0.99</span>
+          </div>
+          <div class="featured-body">
+            <img src="assets/apps/glassledger.jpg" alt="GlassLedger app icon" width="512" height="512">
+            <div>
+              <h2>GlassLedger</h2>
+              <p>Paychecks, bills, and what’s left—made crystal clear.</p>
+            </div>
+          </div>
+          <div class="featured-footer">
+            <span>Private, on-device budgeting</span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </div>
+        </a>
+      </div>
+      <div class="hero-rule" aria-hidden="true"><span>FORGED IN CODE</span></div>
+    </section>
+
+    <section class="apps-section section" id="apps">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="eyebrow"><span></span> Available on the App Store</p>
+          <h2>One developer.<br>Six focused apps.</h2>
+          <p>Small, intentional tools designed to solve a specific problem without unnecessary complexity.</p>
+        </div>
+
+        <div class="app-list">
+          <a class="app-row app-row-featured" href="https://apps.apple.com/us/app/glassledger/id6754355803">
+            <span class="app-index">01</span>
+            <img src="assets/apps/glassledger.jpg" alt="GlassLedger icon" width="512" height="512">
+            <span class="app-details"><strong>GlassLedger</strong><small>Simple paycheck and bill tracking</small></span>
+            <span class="app-meta">Finance · $0.99</span>
+            <span class="app-arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <a class="app-row" href="https://apps.apple.com/us/app/new-you-new-year-goal-tracker/id6755058444">
+            <span class="app-index">02</span>
+            <img src="assets/apps/new-you-new-year-goal-tracker.jpg" alt="New You New Year Goal Tracker icon" width="512" height="512">
+            <span class="app-details"><strong>New You New Year</strong><small>Personal goals, progress, and motivation</small></span>
+            <span class="app-meta">Health &amp; Fitness · Free</span>
+            <span class="app-arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <a class="app-row" href="https://apps.apple.com/us/app/text-assist-ai-reply-helper/id6755321111">
+            <span class="app-index">03</span>
+            <img src="assets/apps/text-assist-ai-reply-helper.jpg" alt="Text Assist AI icon" width="512" height="512">
+            <span class="app-details"><strong>Text Assist AI</strong><small>Paste a message and find the right reply</small></span>
+            <span class="app-meta">Utilities · Free</span>
+            <span class="app-arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <a class="app-row" href="https://apps.apple.com/us/app/littlewins-chore-tracker/id6754824538">
+            <span class="app-index">04</span>
+            <img src="assets/apps/littlewins-chore-tracker.jpg" alt="LittleWins Chore Tracker icon" width="512" height="512">
+            <span class="app-details"><strong>LittleWins</strong><small>Chores made simple and rewarding</small></span>
+            <span class="app-meta">Lifestyle · Free</span>
+            <span class="app-arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <a class="app-row" href="https://apps.apple.com/us/app/only-the-tip-tip-calculator/id6754534551">
+            <span class="app-index">05</span>
+            <img src="assets/apps/only-the-tip-tip-calculator.jpg" alt="Only The Tip app icon" width="512" height="512">
+            <span class="app-details"><strong>Only The Tip</strong><small>A fast, polished tip calculator</small></span>
+            <span class="app-meta">Food &amp; Drink · Free</span>
+            <span class="app-arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <a class="app-row" href="https://apps.apple.com/us/app/redvision/id6787174596">
+            <span class="app-index">06</span>
+            <img src="assets/apps/redvision.jpg" alt="RedVision app icon" width="512" height="512">
+            <span class="app-details"><strong>RedVision</strong><small>A structured relationship assessment</small></span>
+            <span class="app-meta">Health &amp; Fitness · Free</span>
+            <span class="app-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section section" id="story">
+      <div class="shell story-grid">
+        <div class="story-mark" aria-hidden="true">
+          <svg viewBox="0 0 180 260">
+            <path d="M90 8v34M25 62h130M90 76L76 172M58 105l-38 28 38 28M122 105l38 28-38 28M90 190v62"/>
+          </svg>
+        </div>
+        <div class="story-copy">
+          <p class="eyebrow"><span></span> The maker behind the mark</p>
+          <h2>Craft learned in the real world. Applied in code.</h2>
+          <p class="story-lede">I’m James Shelby, an independent iOS developer from Sonoma County, California.</p>
+          <p>My path to software ran through emergency medical work, private security, and more than seven years in knife manufacturing. Each taught me the same lesson: details matter, dependable tools earn trust, and good work should have a clear purpose.</p>
+          <p>Dagger Development brings that mindset to software—focused products, thoughtful interfaces, and steady improvement with every release.</p>
+          <a class="text-link" href="mailto:daggerdevelop@gmail.com">Start a conversation <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="principles-section section" id="principles">
+      <div class="shell">
+        <div class="section-heading compact">
+          <p class="eyebrow"><span></span> How I build</p>
+          <h2>Purpose before complexity.</h2>
+        </div>
+        <div class="principles-grid">
+          <article>
+            <span>01 / Focus</span>
+            <h3>Do one job well.</h3>
+            <p>Every app starts with a clear problem and stays centered on solving it.</p>
+          </article>
+          <article>
+            <span>02 / Craft</span>
+            <h3>Details earn trust.</h3>
+            <p>Typography, interaction, privacy, and performance are part of the product—not polish added later.</p>
+          </article>
+          <article>
+            <span>03 / Progress</span>
+            <h3>Ship, listen, improve.</h3>
+            <p>Useful software is shaped over time through real use and honest feedback.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="shell contact-grid">
+        <div>
+          <p class="eyebrow"><span></span> Support &amp; feedback</p>
+          <h2>Have a question or an idea?</h2>
+        </div>
+        <div>
+          <p>Whether you need support for an app or want to share feedback, I’d like to hear from you.</p>
+          <a class="button button-light" href="mailto:daggerdevelop@gmail.com">daggerdevelop@gmail.com <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    <a href="https://apps.apple.com/us/app/glassledger/id6754355803">click to download my new app, GlassLedger in the Apple app store</a><br />
-    <br />for customer service reach out to<br />
-    <a href="mailto:daggerdevelop@gmail.com">daggerdevelop@gmail.com</a><br />
-    <a href="http://daggerdev.com/privacy-policy">Privacy policy</a>
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <a class="brand footer-brand" href="#top" aria-label="Back to top">
+        <svg class="brand-mark" viewBox="0 0 40 52" aria-hidden="true">
+          <path d="M20 2v7M8 13h24M20 17l-3 18M13 22l-7 5 7 5M27 22l7 5-7 5M20 39v11"/>
+        </svg>
+        <span class="brand-copy"><strong>Dagger</strong><small>Development</small></span>
+      </a>
+      <p>Independent iOS apps by James Shelby.</p>
+      <div class="footer-links">
+        <a href="https://apps.apple.com/us/developer/james-shelby/id1848027565">App Store</a>
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="mailto:daggerdevelop@gmail.com">Contact</a>
+      </div>
+      <small>© <span data-year>2026</span> Dagger Development</small>
+    </div>
   </footer>
 
+  <script src="script.js" defer></script>
 </body>
 </html>
