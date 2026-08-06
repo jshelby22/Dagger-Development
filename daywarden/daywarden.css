@@ -1,0 +1,360 @@
+.dw-main {
+  overflow: hidden;
+}
+
+.dw-header-link {
+  white-space: nowrap;
+}
+
+.dw-hero {
+  padding: clamp(70px, 9vw, 126px) 0 72px;
+  background:
+    radial-gradient(circle at 78% 16%, rgba(100, 224, 211, .12), transparent 28%),
+    radial-gradient(circle at 20% 36%, rgba(84, 176, 229, .10), transparent 30%);
+}
+
+.dw-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .88fr) minmax(420px, 1.12fr);
+  align-items: center;
+  gap: clamp(52px, 8vw, 112px);
+}
+
+.dw-icon-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 34px;
+}
+
+.dw-app-icon {
+  width: 88px;
+  height: 88px;
+  border-radius: 22%;
+  box-shadow: 0 22px 48px rgba(0, 0, 0, .42);
+}
+
+.dw-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid rgba(100, 224, 211, .3);
+  color: #8deade;
+  background: rgba(100, 224, 211, .07);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.dw-hero h1,
+.dw-section h2,
+.dw-callout h2,
+.dw-policy-header h1 {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 400;
+  letter-spacing: -.025em;
+  text-transform: uppercase;
+}
+
+.dw-hero h1 {
+  max-width: 680px;
+  font-size: clamp(62px, 7.2vw, 110px);
+  line-height: .84;
+}
+
+.dw-hero h1 em {
+  color: #67d8d2;
+  font-style: normal;
+}
+
+.dw-lede {
+  max-width: 620px;
+  margin: 30px 0 0;
+  color: var(--ink-soft);
+  font-size: clamp(17px, 1.5vw, 20px);
+}
+
+.dw-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.dw-device {
+  position: relative;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 22px;
+  background: #050708;
+  box-shadow: 0 38px 90px rgba(0, 0, 0, .5);
+  transform: rotate(1.2deg);
+}
+
+.dw-device::after {
+  position: absolute;
+  inset: -1px;
+  content: "";
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(100, 224, 211, .08);
+}
+
+.dw-device img {
+  width: 100%;
+  border-radius: 14px;
+}
+
+.dw-facts {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-raised);
+}
+
+.dw-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.dw-facts-grid p {
+  margin: 0;
+  padding: 24px 28px;
+  color: var(--ink-soft);
+  font-size: 13px;
+  text-align: center;
+}
+
+.dw-facts-grid p + p {
+  border-left: 1px solid var(--line);
+}
+
+.dw-section {
+  padding: clamp(88px, 11vw, 150px) 0;
+}
+
+.dw-section-heading {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  align-items: end;
+  gap: 60px;
+  margin-bottom: 62px;
+}
+
+.dw-section h2,
+.dw-callout h2 {
+  font-size: clamp(50px, 6vw, 82px);
+  line-height: .9;
+}
+
+.dw-section-heading > p {
+  max-width: 500px;
+  margin: 0 0 4px;
+  color: var(--ink-soft);
+  font-size: 17px;
+}
+
+.dw-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+}
+
+.dw-feature {
+  min-height: 270px;
+  padding: 30px 30px 38px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.dw-feature:nth-child(3n + 2),
+.dw-feature:nth-child(3n + 3) {
+  padding-left: 30px;
+  border-left: 1px solid var(--line);
+}
+
+.dw-feature span {
+  color: #75ddd6;
+  font-size: 11px;
+  letter-spacing: .12em;
+}
+
+.dw-feature h3 {
+  margin: 76px 0 12px;
+  font: 500 32px/1 var(--display);
+  text-transform: uppercase;
+}
+
+.dw-feature p {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 14px;
+}
+
+.dw-callout {
+  padding: clamp(80px, 10vw, 132px) 0;
+  color: #071312;
+  background: #75ddd6;
+}
+
+.dw-callout-grid {
+  display: grid;
+  grid-template-columns: 1.08fr .92fr;
+  align-items: end;
+  gap: 70px;
+}
+
+.dw-callout p {
+  max-width: 570px;
+  margin: 0 0 25px;
+  color: #183b39;
+}
+
+.dw-callout a {
+  color: #071312;
+}
+
+.dw-policy-main {
+  padding: 80px 0 120px;
+}
+
+.dw-policy-header {
+  max-width: 880px;
+  padding: 70px 0 62px;
+  border-bottom: 1px solid var(--line);
+}
+
+.dw-policy-header h1 {
+  font-size: clamp(60px, 8vw, 108px);
+  line-height: .87;
+}
+
+.dw-policy-header > p:last-child {
+  margin: 24px 0 0;
+  color: var(--ink-muted);
+}
+
+.dw-policy-body {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 760px);
+  gap: 70px;
+  padding-top: 64px;
+}
+
+.dw-policy-aside {
+  color: #75ddd6;
+  font-size: 11px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.dw-policy-content section {
+  padding: 0 0 38px;
+}
+
+.dw-policy-content h2 {
+  margin: 0 0 12px;
+  font: 500 31px/1 var(--display);
+  text-transform: uppercase;
+}
+
+.dw-policy-content h3 {
+  margin: 28px 0 8px;
+  font-size: 16px;
+}
+
+.dw-policy-content p,
+.dw-policy-content li {
+  color: var(--ink-soft);
+}
+
+.dw-policy-content ul {
+  padding-left: 20px;
+}
+
+.dw-policy-content a {
+  color: #8deade;
+}
+
+.dw-note {
+  padding: 18px 20px;
+  border-left: 2px solid #75ddd6;
+  background: rgba(117, 221, 214, .07);
+}
+
+@media (max-width: 900px) {
+  .dw-hero-grid,
+  .dw-section-heading,
+  .dw-callout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dw-device {
+    max-width: 760px;
+    transform: none;
+  }
+
+  .dw-features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dw-feature:nth-child(n) {
+    padding-left: 28px;
+    border-left: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 680px) {
+  .dw-header-link {
+    min-height: 42px;
+    width: auto;
+  }
+
+  .dw-hero {
+    padding-top: 66px;
+  }
+
+  .dw-icon-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .dw-app-icon {
+    width: 76px;
+    height: 76px;
+  }
+
+  .dw-hero h1 {
+    font-size: clamp(56px, 17vw, 76px);
+  }
+
+  .dw-facts-grid,
+  .dw-features,
+  .dw-policy-body {
+    grid-template-columns: 1fr;
+  }
+
+  .dw-facts-grid p + p {
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .dw-feature:nth-child(n) {
+    min-height: 230px;
+    padding: 28px 0;
+    border-left: 0;
+  }
+
+  .dw-feature h3 {
+    margin-top: 56px;
+  }
+
+  .dw-policy-main {
+    padding-top: 40px;
+  }
+
+  .dw-policy-body {
+    gap: 36px;
+  }
+}
