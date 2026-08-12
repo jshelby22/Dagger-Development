@@ -1,0 +1,68 @@
+---
+import SEO from '../components/SEO.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  image?: string;
+  imageAlt?: string;
+  structuredData?: object | object[];
+  bodyClass?: string;
+}
+
+const { title, description, canonicalPath, image, imageAlt, structuredData, bodyClass = '' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#090b0d" />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+    <SEO {title} {description} {canonicalPath} {image} {imageAlt} {structuredData} />
+    <slot name="head" />
+  </head>
+  <body class={bodyClass}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <SiteHeader />
+    <main id="main"><slot /></main>
+    <SiteFooter />
+    <script>
+      const header = document.querySelector<HTMLElement>('[data-header]');
+      const menuToggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+      const nav = document.querySelector<HTMLElement>('[data-nav]');
+      const updateHeader = () => header?.classList.toggle('scrolled', window.scrollY > 12);
+      updateHeader();
+      window.addEventListener('scroll', updateHeader, { passive: true });
+      const menuLabel = menuToggle?.querySelector('.sr-only');
+      const setMenuOpen = (isOpen: boolean) => {
+        menuToggle?.setAttribute('aria-expanded', String(isOpen));
+        nav?.classList.toggle('open', isOpen);
+        if (menuLabel) menuLabel.textContent = isOpen ? 'Close navigation' : 'Open navigation';
+      };
+      menuToggle?.addEventListener('click', () => {
+        setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true');
+      });
+      nav?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => setMenuOpen(false));
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && menuToggle?.getAttribute('aria-expanded') === 'true') {
+          setMenuOpen(false);
+          menuToggle.focus();
+        }
+      });
+      document.querySelectorAll('[data-year]').forEach((element) => {
+        element.textContent = String(new Date().getFullYear());
+      });
+    </script>
+  </body>
+</html>

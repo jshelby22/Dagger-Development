@@ -1,0 +1,11 @@
+---
+interface Props {
+  href: string;
+  label: string;
+  location?: string;
+}
+const { href, label, location = 'app-page' } = Astro.props;
+---
+<a class="app-store-button" href={href} target="_blank" rel="noopener" aria-label={`Download ${label} on the App Store`} data-app-store-cta={location}>
+  <img src="/assets/badges/download-on-the-app-store.svg" width="190" height="63" alt="Download on the App Store" />
+</a>

@@ -1,0 +1,203 @@
+---
+import type { AppPage } from '../data/apps';
+import BaseLayout from './BaseLayout.astro';
+import AppStoreButton from '../components/AppStoreButton.astro';
+import AppFAQ from '../components/AppFAQ.astro';
+import '../styles/app-page.css';
+
+const { app } = Astro.props as { app: AppPage };
+const canonicalPath = `/apps/${app.slug}/`;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: app.name,
+  alternateName: app.shortName,
+  operatingSystem: app.operatingSystem,
+  applicationCategory: app.category === 'Games' ? 'GameApplication' : 'FinanceApplication',
+  applicationSubCategory: app.category,
+  description: app.metaDescription,
+  url: new URL(canonicalPath, Astro.site),
+  downloadUrl: app.appStoreUrl,
+  installUrl: app.appStoreUrl,
+  image: new URL(app.icon, Astro.site),
+  screenshot: app.screenshots.map((screenshot) => new URL(screenshot.src, Astro.site).href),
+  author: {
+    '@type': 'Person',
+    name: 'James Shelby',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Dagger Development',
+    url: 'https://daggerdev.com/',
+  },
+  softwareVersion: app.version,
+  dateModified: app.updated,
+  offers: {
+    '@type': 'Offer',
+    price: app.offerPrice.toFixed(2),
+    priceCurrency: app.offerCurrency,
+    availability: 'https://schema.org/InStock',
+    url: app.appStoreUrl,
+    description: app.pricingSummary,
+  },
+};
+---
+<BaseLayout
+  title={app.seoTitle}
+  description={app.metaDescription}
+  canonicalPath={canonicalPath}
+  image={app.screenshots[0].src}
+  imageAlt={app.screenshots[0].alt}
+  structuredData={schema}
+  bodyClass={`app-theme app-theme-${app.slug}`}
+>
+  <style is:global define:vars={{ accent: app.accent, 'accent-soft': app.accentSoft }}></style>
+
+  <section class="app-hero">
+    <div class="shell app-hero-grid">
+      <div class="app-hero-copy">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a><span aria-hidden="true">/</span><a href="/apps/">Apps</a><span aria-hidden="true">/</span><span>{app.shortName}</span>
+        </nav>
+        <div class="app-identity">
+          <img src={app.icon} alt={`${app.shortName} app icon`} width="512" height="512" fetchpriority="high" />
+          <div>
+            <p class="eyebrow"><span></span>{app.eyebrow}</p>
+            <p class="app-name">{app.name}</p>
+          </div>
+        </div>
+        <h1>{app.headline}</h1>
+        <p class="app-hero-lede">{app.lede}</p>
+        <div class="app-hero-actions">
+          <AppStoreButton href={app.appStoreUrl} label={app.shortName} location="hero" />
+          <span>{app.pricingSummary}</span>
+        </div>
+        <dl class="app-facts" aria-label={`${app.shortName} App Store facts`}>
+          <div><dt>Category</dt><dd>{app.category}</dd></div>
+          <div><dt>Version</dt><dd>{app.version}</dd></div>
+          <div><dt>Requires</dt><dd>{app.operatingSystem}</dd></div>
+        </dl>
+      </div>
+      <figure class="hero-device">
+        <img src={app.screenshots[0].src} alt={app.screenshots[0].alt} width={app.screenshots[0].width} height={app.screenshots[0].height} fetchpriority="high" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="app-story-section light-section">
+    <div class="shell split-story">
+      <div>
+        <p class="eyebrow dark"><span></span>The problem</p>
+        <h2>{app.problemTitle}</h2>
+      </div>
+      <div class="long-copy">
+        {app.problem.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="app-story-section">
+    <div class="shell split-story solution-story">
+      <div>
+        <p class="eyebrow"><span></span>The solution</p>
+        <h2>{app.solutionTitle}</h2>
+      </div>
+      <div class="long-copy">
+        {app.solution.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="app-feature-section">
+    <div class="shell">
+      <header class="app-section-heading">
+        <p class="eyebrow"><span></span>Real App Store features</p>
+        <h2>Built around one clear job.</h2>
+      </header>
+      <div class="feature-grid">
+        {app.features.map((feature, index) => (
+          <article>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <h3>{feature.title}</h3>
+            <p>{feature.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="screenshots-section" aria-labelledby="screenshots-heading">
+    <div class="shell">
+      <header class="app-section-heading screenshots-heading">
+        <p class="eyebrow"><span></span>Inside the app</p>
+        <h2 id="screenshots-heading">See how it works on iPhone.</h2>
+        <p>Current screenshots from the public App Store listing.</p>
+      </header>
+      <div class="screenshot-rail">
+        {app.screenshots.map((screenshot, index) => (
+          <figure>
+            <img src={screenshot.src} alt={screenshot.alt} width={screenshot.width} height={screenshot.height} loading={index < 2 ? 'eager' : 'lazy'} decoding="async" />
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="how-section light-section">
+    <div class="shell">
+      <header class="app-section-heading dark-heading">
+        <p class="eyebrow dark"><span></span>How it works</p>
+        <h2>A simple path from start to result.</h2>
+      </header>
+      <ol class="steps-grid">
+        {app.steps.map((step, index) => (
+          <li><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{step.title}</h3><p>{step.description}</p></div></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="audience-section">
+    <div class="shell audience-grid">
+      <header class="app-section-heading">
+        <p class="eyebrow"><span></span>Who it’s for</p>
+        <h2>Useful when this is the job you need done.</h2>
+      </header>
+      <ul>
+        {app.audiences.map((audience) => <li>{audience}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="faq-section light-section">
+    <div class="shell faq-grid">
+      <header class="app-section-heading dark-heading">
+        <p class="eyebrow dark"><span></span>Questions, answered</p>
+        <h2>{app.shortName} FAQ</h2>
+      </header>
+      <AppFAQ faqs={app.faqs} />
+    </div>
+  </section>
+
+  <section class="related-section">
+    <div class="shell related-grid">
+      <div>
+        <p class="eyebrow"><span></span>Another DaggerDev app</p>
+        <h2>{app.relatedName}</h2>
+        <p>{app.relatedSummary}</p>
+      </div>
+      <a class="button button-quiet" href={`/apps/${app.relatedSlug}/`}>Explore {app.relatedName}<span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <section class="app-download-section">
+    <div class="shell download-grid">
+      <div>
+        <p class="eyebrow dark"><span></span>Available on the App Store</p>
+        <h2>Ready to try {app.shortName}?</h2>
+        <p>{app.pricingSummary}</p>
+      </div>
+      <AppStoreButton href={app.appStoreUrl} label={app.shortName} location="footer" />
+    </div>
+  </section>
+</BaseLayout>

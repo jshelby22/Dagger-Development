@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { apps } from '../../data/apps';
+import { portfolioApps } from '../../data/portfolio';
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'DaggerDev iOS Apps',
+  description: 'The current public US App Store portfolio of independent iOS developer James Shelby, with detailed guides for apps that offer optional in-app purchases.',
+  url: 'https://daggerdev.com/apps/',
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: portfolioApps.length,
+    itemListElement: portfolioApps.map((app, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: app.name,
+      url: app.guideSlug ? `https://daggerdev.com/apps/${app.guideSlug}/` : app.url,
+    })),
+  },
+};
+---
+<BaseLayout
+  title="iOS Apps by James Shelby | DaggerDev App Directory"
+  description="Explore active DaggerDev iOS apps from James Shelby. Compare real features, pricing, screenshots, privacy details, and App Store links."
+  canonicalPath="/apps/"
+  image="/dagger_logo.png"
+  imageAlt="Dagger Development app directory"
+  structuredData={itemListSchema}
+  bodyClass="directory-page"
+>
+  <section class="directory-hero">
+    <div class="shell">
+      <nav class="directory-breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>Apps</span></nav>
+      <p class="eyebrow"><span></span>DaggerDev app directory</p>
+      <h1>Find the iOS app built for the job.</h1>
+      <p>Start with the problem you want to solve. These source-grounded guides cover the active James Shelby apps whose public App Store listings currently show optional in-app purchases.</p>
+    </div>
+  </section>
+
+  <section class="directory-listing">
+    <div class="shell directory-grid">
+      {apps.map((app, index) => (
+        <article class="directory-card">
+          <div class="directory-card-top">
+            <span>{String(index + 1).padStart(2, '0')} / {app.category}</span>
+            <img src={app.icon} alt={`${app.shortName} app icon`} width="512" height="512" />
+          </div>
+          <div>
+            <p class="directory-keyword">{app.primaryKeyword}</p>
+            <h2>{app.shortName}</h2>
+            <p>{app.lede}</p>
+          </div>
+          <dl>
+            <div><dt>Download</dt><dd>Free</dd></div>
+            <div><dt>Optional purchase</dt><dd>{app.pricingSummary}</dd></div>
+          </dl>
+          <div class="directory-actions">
+            <a class="button button-primary" href={`/apps/${app.slug}/`}>Read the guide <span aria-hidden="true">→</span></a>
+            <a class="text-link directory-store-link" href={app.appStoreUrl}>View on App Store <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="directory-note">
+    <div class="shell">
+      <p class="eyebrow"><span></span>All active public apps</p>
+      <h2>The complete James Shelby portfolio.</h2>
+      <p>Every app currently returned by Apple’s US developer listing appears below. This phase adds in-depth SEO guides only for the listings whose current product pages visibly offer an in-app purchase.</p>
+      <div class="portfolio-list">
+        {portfolioApps.map((app) => (
+          <article>
+            <img src={app.icon} alt={`${app.name} app icon`} width="512" height="512" loading="lazy" />
+            <div><h3>{app.name}</h3><p>{app.subtitle}</p></div>
+            <span>{app.category}</span>
+            <span class:list={["iap-label", { active: app.hasPublicIap }]}>{app.hasPublicIap ? 'In-app purchase' : 'No public IAP menu found'}</span>
+            <a href={app.guideSlug ? `/apps/${app.guideSlug}/` : app.url} aria-label={app.guideSlug ? `Read the ${app.name} guide` : `View ${app.name} on the App Store`}>{app.guideSlug ? 'Guide →' : 'App Store ↗'}</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="directory-method">
+    <div class="shell">
+      <p class="eyebrow"><span></span>Research boundary</p>
+      <h2>Current public listings, not assumptions.</h2>
+      <p>The qualifying set is based on the current US App Store developer portfolio for James Shelby and the visible “In-App Purchases” section on each public product page. A free download alone was not treated as proof that an app has a purchase.</p>
+    </div>
+  </section>
+
+  <style>
+    .directory-hero { padding: clamp(90px, 10vw, 145px) 0 clamp(80px, 9vw, 125px); border-bottom: 1px solid var(--line); }
+    .directory-breadcrumbs { display: flex; gap: 8px; margin-bottom: 40px; color: var(--ink-muted); font-size: 12px; }
+    .directory-breadcrumbs a { color: var(--ink-soft); text-decoration: none; }
+    .directory-hero h1, .directory-card h2, .directory-note h2 { margin: 0; font-family: var(--display); font-weight: 400; letter-spacing: -.025em; line-height: .9; text-transform: uppercase; }
+    .directory-hero h1 { max-width: 920px; font-size: clamp(62px, 9vw, 118px); }
+    .directory-hero > div > p:last-child { max-width: 760px; margin: 32px 0 0; color: var(--ink-soft); font-size: 19px; }
+    .directory-listing { padding: clamp(80px, 10vw, 140px) 0; background: var(--bg-raised); }
+    .directory-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .directory-card { display: grid; min-height: 660px; padding: 28px; border: 1px solid var(--line); background: var(--bg); }
+    .directory-card-top { display: flex; align-items: start; justify-content: space-between; color: var(--ink-muted); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+    .directory-card-top img { width: 92px; height: 92px; border-radius: 22%; box-shadow: 0 18px 40px rgba(0,0,0,.4); }
+    .directory-keyword { margin: 50px 0 12px; color: var(--steel-bright); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+    .directory-card h2 { font-size: clamp(48px, 5vw, 68px); }
+    .directory-card > div > p:last-child { max-width: 580px; color: var(--ink-soft); }
+    .directory-card dl { align-self: end; display: grid; gap: 10px; margin: 32px 0; padding-top: 20px; border-top: 1px solid var(--line); }
+    .directory-card dl > div { display: grid; grid-template-columns: 130px 1fr; gap: 18px; }
+    .directory-card dt { color: var(--ink-muted); font-size: 11px; text-transform: uppercase; }
+    .directory-card dd { margin: 0; color: var(--ink-soft); font-size: 13px; }
+    .directory-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
+    .directory-store-link { margin-top: 0; color: var(--ink-soft); }
+    .directory-note, .directory-method { padding: clamp(80px, 10vw, 130px) 0; }
+    .directory-note { background: var(--cream); color: var(--dark-ink); }
+    .directory-method { background: var(--steel); color: var(--dark-ink); }
+    .directory-note .eyebrow, .directory-method .eyebrow { color: #466985; }
+    .directory-note h2, .directory-method h2 { max-width: 860px; font-size: clamp(52px, 7vw, 84px); }
+    .directory-note > div > p:not(.eyebrow), .directory-method > div > p:not(.eyebrow) { max-width: 760px; color: #555b61; }
+    .portfolio-list { margin-top: 55px; border-top: 1px solid rgba(17,20,23,.2); }
+    .portfolio-list article { display: grid; grid-template-columns: 54px minmax(210px, 1fr) 120px 180px 90px; align-items: center; gap: 18px; min-height: 92px; border-bottom: 1px solid rgba(17,20,23,.2); }
+    .portfolio-list img { width: 50px; height: 50px; border-radius: 22%; }
+    .portfolio-list h3 { margin: 0; font: 500 24px/1 var(--display); text-transform: uppercase; }
+    .portfolio-list p { margin: 4px 0 0; color: #656b71; font-size: 12px; }
+    .portfolio-list > article > span, .portfolio-list a { color: #555b61; font-size: 12px; }
+    .portfolio-list a { justify-self: end; color: var(--dark-ink); font-weight: 600; text-decoration: none; }
+    .iap-label.active { color: #24526f; font-weight: 600; }
+    @media (max-width: 800px) { .directory-grid { grid-template-columns: 1fr; } .portfolio-list article { grid-template-columns: 50px 1fr auto; padding: 18px 0; } .portfolio-list > article > span { display: none; } }
+    @media (max-width: 520px) { .directory-card { min-height: 620px; padding: 22px; } .directory-card-top img { width: 72px; height: 72px; } .directory-card dl > div { grid-template-columns: 100px 1fr; } .directory-actions .button { width: 100%; } .portfolio-list h3 { font-size: 20px; } .portfolio-list a { font-size: 11px; } }
+  </style>
+</BaseLayout>

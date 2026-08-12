@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://daggerdev.com/sitemap-index.xml

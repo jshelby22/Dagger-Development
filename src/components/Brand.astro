@@ -1,0 +1,9 @@
+---
+const { href = '/', label = 'Dagger Development home', footer = false } = Astro.props;
+---
+<a class:list={["brand", { "footer-brand": footer }]} href={href} aria-label={label}>
+  <svg class="brand-mark" viewBox="0 0 40 52" aria-hidden="true">
+    <path d="M20 2v7M8 13h24M20 17l-3 18M13 22l-7 5 7 5M27 22l7 5-7 5M20 39v11" />
+  </svg>
+  <span class="brand-copy"><strong>Dagger</strong><small>Development</small></span>
+</a>

@@ -1,0 +1,11 @@
+---
+const { faqs } = Astro.props;
+---
+<div class="faq-list">
+  {faqs.map((faq: { question: string; answer: string }, index: number) => (
+    <details class="faq-item" open={index === 0}>
+      <summary>{faq.question}</summary>
+      <p>{faq.answer}</p>
+    </details>
+  ))}
+</div>
