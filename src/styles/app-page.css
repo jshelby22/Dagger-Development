@@ -33,6 +33,9 @@
 .hero-device { position: relative; justify-self: center; width: min(100%, 400px); margin: 0; padding: 18px; background: rgba(255,255,255,.025); border: 1px solid var(--line); box-shadow: 0 35px 100px rgba(0,0,0,.42); }
 .hero-device::before { position: absolute; inset: -1px; content: ""; z-index: -1; background: linear-gradient(150deg, var(--accent-soft), transparent 40%); }
 .hero-device img { width: 100%; height: auto; }
+.app-theme-campconomy .app-hero-grid { grid-template-columns: minmax(0, 1fr) minmax(420px, .9fr); }
+.app-theme-campconomy .hero-device { align-self: start; width: min(100%, 620px); margin-top: 200px; }
+.app-theme-campconomy .screenshot-rail { grid-auto-columns: minmax(420px, 560px); }
 
 .app-story-section, .app-feature-section, .screenshots-section, .how-section, .audience-section, .faq-section, .related-section { padding: clamp(88px, 11vw, 155px) 0; }
 .light-section { background: var(--cream); color: var(--dark-ink); }
@@ -93,8 +96,9 @@
 .app-download-section p:not(.eyebrow) { max-width: 700px; }
 
 @media (max-width: 900px) {
-  .app-hero-grid { grid-template-columns: 1fr; }
+  .app-hero-grid, .app-theme-campconomy .app-hero-grid { grid-template-columns: 1fr; }
   .hero-device { justify-self: start; width: min(100%, 380px); }
+  .app-theme-campconomy .hero-device { margin-top: 0; }
   .split-story, .audience-grid, .faq-grid { grid-template-columns: 1fr; }
   .feature-grid { grid-template-columns: repeat(2, 1fr); }
   .feature-grid article:not(:nth-child(3n + 1)) { padding-left: 0; border-left: 0; }
@@ -122,6 +126,7 @@
   .feature-grid article, .feature-grid article:nth-child(even) { min-height: 230px; padding: 26px 0; border-left: 0; }
   .feature-grid h3 { margin-top: 52px; }
   .screenshot-rail { grid-auto-columns: 78vw; margin-right: calc((100vw - var(--shell)) / -2); }
+  .app-theme-campconomy .screenshot-rail { grid-auto-columns: 88vw; }
   .steps-grid { grid-template-columns: 1fr; }
   .steps-grid li { min-height: 200px; padding: 25px 20px; }
   .related-grid .button { width: 100%; }

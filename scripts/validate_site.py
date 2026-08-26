@@ -16,6 +16,10 @@ GENERATED = {
     "apps/index.html": "https://daggerdev.com/apps/",
     "apps/glassledger/index.html": "https://daggerdev.com/apps/glassledger/",
     "apps/alchemy-pocketlab/index.html": "https://daggerdev.com/apps/alchemy-pocketlab/",
+    "apps/perkpocket/index.html": "https://daggerdev.com/apps/perkpocket/",
+    "apps/campkeep/index.html": "https://daggerdev.com/apps/campkeep/",
+    "apps/scratch-trap/index.html": "https://daggerdev.com/apps/scratch-trap/",
+    "apps/campconomy/index.html": "https://daggerdev.com/apps/campconomy/",
 }
 REQUIRED_SITEMAP = set(GENERATED.values()) | {
     "https://daggerdev.com/privacy-policy",

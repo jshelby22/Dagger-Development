@@ -7,13 +7,20 @@ import '../styles/app-page.css';
 
 const { app } = Astro.props as { app: AppPage };
 const canonicalPath = `/apps/${app.slug}/`;
+const applicationCategory = app.category === 'Games'
+  ? 'GameApplication'
+  : app.category === 'Finance'
+    ? 'FinanceApplication'
+    : app.category === 'Travel'
+      ? 'TravelApplication'
+      : app.category;
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: app.name,
   alternateName: app.shortName,
   operatingSystem: app.operatingSystem,
-  applicationCategory: app.category === 'Games' ? 'GameApplication' : 'FinanceApplication',
+  applicationCategory,
   applicationSubCategory: app.category,
   description: app.metaDescription,
   url: new URL(canonicalPath, Astro.site),
@@ -130,7 +137,7 @@ const schema = {
     <div class="shell">
       <header class="app-section-heading screenshots-heading">
         <p class="eyebrow"><span></span>Inside the app</p>
-        <h2 id="screenshots-heading">See how it works on iPhone.</h2>
+        <h2 id="screenshots-heading">See how it works in the app.</h2>
         <p>Current screenshots from the public App Store listing.</p>
       </header>
       <div class="screenshot-rail">

@@ -9,6 +9,10 @@ const pages = [
   ['apps', '/apps/'],
   ['glassledger', '/apps/glassledger/'],
   ['alchemy-pocketlab', '/apps/alchemy-pocketlab/'],
+  ['perkpocket', '/apps/perkpocket/'],
+  ['campkeep', '/apps/campkeep/'],
+  ['scratch-trap', '/apps/scratch-trap/'],
+  ['campconomy', '/apps/campconomy/'],
 ];
 
 await mkdir(OUT, { recursive: true });
@@ -229,6 +233,7 @@ await trustedClick('[data-menu-toggle]');
 const menuOpen = await evaluate(`(() => { const b=document.querySelector('[data-menu-toggle]'); const n=document.querySelector('[data-nav]'); return {expanded:b.getAttribute('aria-expanded'), label:b.querySelector('.sr-only').textContent.trim(), visibility:getComputedStyle(n).visibility, pointerEvents:getComputedStyle(n).pointerEvents}; })()`);
 await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27, nativeVirtualKeyCode: 27 });
 await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27, nativeVirtualKeyCode: 27 });
+await new Promise((resolve) => setTimeout(resolve, 300));
 const menuClosed = await evaluate(`(() => { const b=document.querySelector('[data-menu-toggle]'); const n=document.querySelector('[data-nav]'); return {expanded:b.getAttribute('aria-expanded'), label:b.querySelector('.sr-only').textContent.trim(), visibility:getComputedStyle(n).visibility, focused:document.activeElement===b}; })()`);
 report.interactions.mobileMenu = { before: menuBefore, open: menuOpen, afterEscape: menuClosed };
 

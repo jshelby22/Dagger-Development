@@ -3,6 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { apps } from '../../data/apps';
 import { portfolioApps } from '../../data/portfolio';
 
+const guideApps = [...apps].sort((left, right) => right.updated.localeCompare(left.updated));
+
 const itemListSchema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
@@ -41,7 +43,7 @@ const itemListSchema = {
 
   <section class="directory-listing">
     <div class="shell directory-grid">
-      {apps.map((app, index) => (
+      {guideApps.map((app, index) => (
         <article class="directory-card">
           <div class="directory-card-top">
             <span>{String(index + 1).padStart(2, '0')} / {app.category}</span>

@@ -10,8 +10,12 @@ export type PortfolioApp = {
 };
 
 // Point-in-time US App Store portfolio for Apple artist ID 1848027565.
-// Last verified: 2026-08-12. Update from Apple before changing public availability or IAP status.
+// Last verified: 2026-08-25. Update from Apple before changing public availability or IAP status.
 export const portfolioApps: PortfolioApp[] = [
+  { id: 6799532612, name: 'PerkPocket - employee benefits', subtitle: 'Employee Benefits Tracker', category: 'Finance', url: 'https://apps.apple.com/us/app/perkpocket-employee-benefits/id6799532612', icon: '/assets/apps/perkpocket-employee-benefits.jpg', hasPublicIap: true, guideSlug: 'perkpocket' },
+  { id: 6796974964, name: 'CampKeep: Camping Journal', subtitle: 'Campsite Map, Photos & Notes', category: 'Travel', url: 'https://apps.apple.com/us/app/campkeep-camping-journal/id6796974964', icon: '/assets/apps/campkeep-camping-journal.jpg', hasPublicIap: true, guideSlug: 'campkeep' },
+  { id: 6797985857, name: 'Scratch Trap', subtitle: 'Fast Cat Reflex Game', category: 'Games', url: 'https://apps.apple.com/us/app/scratch-trap/id6797985857', icon: '/assets/apps/scratch-trap.jpg', hasPublicIap: true, guideSlug: 'scratch-trap' },
+  { id: 6795309043, name: 'CampConomy', subtitle: 'Campground Management', category: 'Games', url: 'https://apps.apple.com/us/app/campconomy/id6795309043', icon: '/assets/apps/campconomy.jpg', hasPublicIap: true, guideSlug: 'campconomy' },
   { id: 6754355803, name: 'GlassLedger: Bill Organizer', subtitle: 'Paycheck Planner & Money Left', category: 'Finance', url: 'https://apps.apple.com/us/app/glassledger-bill-organizer/id6754355803', icon: '/assets/apps/glassledger.jpg', hasPublicIap: true, guideSlug: 'glassledger' },
   { id: 6794703569, name: 'Alchemy PocketLab', subtitle: 'Cozy Element Discovery', category: 'Games', url: 'https://apps.apple.com/us/app/alchemy-pocketlab/id6794703569', icon: '/assets/apps/alchemy-pocketlab.jpg', hasPublicIap: true, guideSlug: 'alchemy-pocketlab' },
   { id: 6794868778, name: 'HookLedger: Fishing Journal', subtitle: 'Private Catch Log & Map', category: 'Sports', url: 'https://apps.apple.com/us/app/hookledger-fishing-journal/id6794868778', icon: '/assets/apps/hookledger-fishing-journal.jpg', hasPublicIap: false },
