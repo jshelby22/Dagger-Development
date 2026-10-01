@@ -30,6 +30,8 @@ REQUIRED_SITEMAP = set(GENERATED.values()) | {
     "https://daggerdev.com/daywarden/",
     "https://daggerdev.com/daywarden/privacy/",
     "https://daggerdev.com/daywarden/support/",
+    "https://daggerdev.com/unpin/privacy/",
+    "https://daggerdev.com/unpin/support/",
 }
 GOOGLE_FILE = "google240690021f7b9f90.html"
 GOOGLE_SHA256 = "4b106ab240f5afb837efa639b165c078b34d90c0bc31582c788ccf852f60031f"

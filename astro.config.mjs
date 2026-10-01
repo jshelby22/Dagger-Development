@@ -10,6 +10,8 @@ const legacyPages = [
   'https://daggerdev.com/daywarden/',
   'https://daggerdev.com/daywarden/privacy/',
   'https://daggerdev.com/daywarden/support/',
+  'https://daggerdev.com/unpin/privacy/',
+  'https://daggerdev.com/unpin/support/',
 ];
 
 export default defineConfig({
